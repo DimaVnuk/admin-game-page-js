@@ -271,6 +271,7 @@ const filterByPriceSegmentSecond = createFieldset(
   searchForm,
   "filter-fieldset"
 );
+
 createInput(
   "radio",
   "filter",
