@@ -26,7 +26,7 @@ function createInput(
   inputElem.className = styleInp;
   inputElem.value = value;
   inputElem.placeholder = placeholder;
-  inputElem.pattern = '^[a-zA-Z0-9,]*$';
+  inputElem.pattern = "^[a-zA-Z0-9,]*$";
   inputElem.title = title;
   inputElem.required = required;
 
@@ -39,10 +39,10 @@ function createInput(
   divElem.prepend(divErr);
 }
 
-function createFieldset(legendText, form,style) {
+function createFieldset(legendText, form, style) {
   const fieldset = document.createElement("fieldset");
   form.append(fieldset);
-  fieldset.classList.add(style)
+  fieldset.classList.add(style);
   const legend = document.createElement("legend");
   fieldset.append(legend);
   legend.innerText = legendText;
@@ -77,8 +77,8 @@ function createButton(buttonText, id, field) {
   buttonCreate.innerText = buttonText;
 }
 
-const mainForm = createForm("style-form",'formCreate');
-//inputType, name, labelName, id, field, styleInp, value, placeholder, pattern,idDiv
+const mainForm = createForm("style-form", "formCreate");
+
 const mainInformation = createFieldset("Main information", mainForm);
 createInput(
   "text",
@@ -156,7 +156,6 @@ createInput(
   "dateValid"
 );
 
-
 const priceSegment = createFieldset("Price segment", mainForm);
 createInput(
   "radio",
@@ -223,16 +222,7 @@ createInput(
 );
 const searchForm = createForm("form-style-search-filtered", "searchForm");
 const search = createFieldset("Search", searchForm);
-createInput(
-  "text",
-  "ok-google",
-  "OK, Google",
-  "okGoogle",
-  search,
-  "",
-  "",
-  ""
-);
+createInput("text", "ok-google", "OK, Google", "okGoogle", search, "", "", "");
 
 const filterByPriceSegmentFirst = createFieldset(
   "Filter by price segment",

@@ -3,27 +3,22 @@ document.body.append(containerForSave);
 containerForSave.id = "forSave";
 containerForSave.classList.add("cont-for-save-style");
 
-
-
-
-
 const renderList = (model = initSortedArray(catalog)) => {
-  
   forSave.innerHTML = "";
   model.forEach((item) => {
     const contElem = document.createElement("div");
 
     contElem.classList.add("cont-game-style");
 
-  if(item.priceSegment === 'cheap'){
-  contElem.classList.add('container-card_cheap')
-  }
-  if(item.priceSegment === 'optimal'){
-  contElem.classList.add('container-card_optimal')
-  }
-  if(item.priceSegment === 'premium'){
-  contElem.classList.add('container-card_premium')
-  }
+    if (item.priceSegment === "cheap") {
+      contElem.classList.add("container-card_cheap");
+    }
+    if (item.priceSegment === "optimal") {
+      contElem.classList.add("container-card_optimal");
+    }
+    if (item.priceSegment === "premium") {
+      contElem.classList.add("container-card_premium");
+    }
 
     const divName = document.createElement("div");
 
@@ -52,16 +47,11 @@ const renderList = (model = initSortedArray(catalog)) => {
     divDesc.innerHTML = `description:`;
 
     const divDescHidden = document.createElement("div");
-    divDescHidden.innerHTML=`${item.desc}`
-   
-    
-    
-    
+    divDescHidden.innerHTML = `${item.desc}`;
 
     const divLastOne = document.createElement("div");
-    divLastOne.innerHTML = 'Last one';
+    divLastOne.innerHTML = "Last one";
     /* divLastOne.classList.add('last-one') */
-    
 
     forSave.append(contElem);
     contElem.append(divName);
@@ -70,26 +60,25 @@ const renderList = (model = initSortedArray(catalog)) => {
     contElem.append(divPrice);
     contElem.append(divDate);
     contElem.append(divDesc);
-    contElem.append(divDescHidden)
+    contElem.append(divDescHidden);
     contElem.append(divImg);
-    contElem.prepend(divLastOne)
+    contElem.prepend(divLastOne);
     divDescHidden.hidden = true;
-    divDesc.addEventListener('click', () =>{
+    divDesc.addEventListener("click", () => {
       divDescHidden.hidden = false;
-    })
-  
-    divDescHidden.addEventListener('click', ()=>{
-      divDescHidden.hidden = true;
-    })
+    });
 
-    if(item.count === 1){
+    divDescHidden.addEventListener("click", () => {
+      divDescHidden.hidden = true;
+    });
+
+    if (item.count === 1) {
       divLastOne.hidden = false;
-      divLastOne.classList.add('last-one')
-    } else{
+      divLastOne.classList.add("last-one");
+    } else {
       divLastOne.hidden = true;
     }
-   
-    
+
     const btSave = document.createElement("button");
     btSave.innerHTML = "Save";
     btSave.itemID = item.itemID;
@@ -99,7 +88,6 @@ const renderList = (model = initSortedArray(catalog)) => {
     btDelete.itemID = item.itemID;
 
     btSave.addEventListener("click", (event) => {
-      
       renderList();
     });
 
@@ -116,7 +104,6 @@ const renderList = (model = initSortedArray(catalog)) => {
       renderList();
     });
 
-     
     const editButton = document.createElement("button");
     editButton.itemID = item.itemID;
     editButton.innerText = "Edit";
@@ -125,15 +112,14 @@ const renderList = (model = initSortedArray(catalog)) => {
 
     editButton.addEventListener("click", (event) => {
       editButton.hidden = true;
-      
-      
+
       const editForm = document.createElement("form");
 
       const editDivName = document.createElement("div");
       const editInputName = document.createElement("input");
       const editLabelName = document.createElement("label");
-      
-      editLabelName.innerHTML = 'Name'
+
+      editLabelName.innerHTML = "Name";
       editInputName.type = "text";
       editInputName.id = "errName";
       editInputName.className = "edit-input";
@@ -142,7 +128,7 @@ const renderList = (model = initSortedArray(catalog)) => {
       const editDivArticle = document.createElement("div");
       const editLabelArticle = document.createElement("label");
 
-      editLabelArticle.innerHTML = 'Article'
+      editLabelArticle.innerHTML = "Article";
       editInputArticle.type = "text";
       editInputArticle.id = "errArticle";
       editInputArticle.className = "edit-input";
@@ -151,7 +137,7 @@ const renderList = (model = initSortedArray(catalog)) => {
       const editDivCount = document.createElement("div");
       const editLabelCount = document.createElement("label");
 
-      editLabelCount.innerHTML = 'Count'
+      editLabelCount.innerHTML = "Count";
       editInputCount.type = "number";
       editInputCount.id = "errCount";
       editInputCount.className = "edit-input";
@@ -160,7 +146,7 @@ const renderList = (model = initSortedArray(catalog)) => {
       const editDivPrice = document.createElement("div");
       const editLabelPrice = document.createElement("label");
 
-      editLabelPrice.innerHTML = 'Price'
+      editLabelPrice.innerHTML = "Price";
       editInputPrice.type = "number";
       editInputPrice.id = "errPrice";
       editInputPrice.className = "edit-input";
@@ -169,7 +155,7 @@ const renderList = (model = initSortedArray(catalog)) => {
       const editDivDate = document.createElement("div");
       const editLabelDate = document.createElement("label");
 
-      editLabelDate.innerHTML = 'Date'
+      editLabelDate.innerHTML = "Date";
       editInputDate.type = "text";
       editInputDate.id = "errDate";
       editInputDate.className = "edit-input";
@@ -178,16 +164,16 @@ const renderList = (model = initSortedArray(catalog)) => {
       const editDivImg = document.createElement("div");
       const editLabelImg = document.createElement("label");
 
-      editLabelImg.innerHTML = 'Image'
+      editLabelImg.innerHTML = "Image";
       editInputImg.type = "text";
       editInputImg.id = "errName";
       editInputImg.className = "edit-input";
 
       const editInputDesc = document.createElement("input");
-      const editDivDesc = document.createElement("div");
+
       const editLabelDesc = document.createElement("label");
 
-      editLabelDesc.innerHTML = 'Description'
+      editLabelDesc.innerHTML = "Description";
       editInputDesc.type = "text";
       editInputDesc.id = "errName";
       editInputDesc.className = "edit-input";
@@ -198,39 +184,39 @@ const renderList = (model = initSortedArray(catalog)) => {
       editInputName.value = "";
       divName.innerHTML = "";
 
-const divEditErrName = document.createElement('div')
-divEditErrName.style.color = 'red'
-divEditErrName.hidden = true
-const divEditErrArticle = document.createElement('div')
-divEditErrArticle.style.color = 'red'
-divEditErrArticle.hidden = true
-const divEditErrCount = document.createElement('div')
-divEditErrCount.style.color = 'red'
-divEditErrCount.hidden = true
-const divEditErrPrice = document.createElement('div')
-divEditErrPrice.style.color = 'red'
-divEditErrPrice .hidden = true
+      const divEditErrName = document.createElement("div");
+      divEditErrName.style.color = "red";
+      divEditErrName.hidden = true;
+      const divEditErrArticle = document.createElement("div");
+      divEditErrArticle.style.color = "red";
+      divEditErrArticle.hidden = true;
+      const divEditErrCount = document.createElement("div");
+      divEditErrCount.style.color = "red";
+      divEditErrCount.hidden = true;
+      const divEditErrPrice = document.createElement("div");
+      divEditErrPrice.style.color = "red";
+      divEditErrPrice.hidden = true;
 
-divEditErrName.innerHTML = 'Enter more than 5 word'
-divEditErrArticle.innerHTML = "Enter your symbol in format 'B12'"
-divEditErrCount.innerHTML = 'Enter only positive integers number'
-divEditErrPrice.innerHTML = 'Enter only positive integers number'
+      divEditErrName.innerHTML = "Enter more than 5 word";
+      divEditErrArticle.innerHTML = "Enter your symbol in format 'B12'";
+      divEditErrCount.innerHTML = "Enter only positive integers number";
+      divEditErrPrice.innerHTML = "Enter only positive integers number";
 
       contElem.append(editForm);
       editForm.append(editDivName);
       editDivName.append(editLabelName);
-      editLabelName.append(editInputName)
-      editDivName.append(divEditErrName)
+      editLabelName.append(editInputName);
+      editDivName.append(divEditErrName);
 
       const elemArticle = catalog.find(
         (item) => item.itemID === editButton.itemID
       );
       editInputArticle.value = "";
       divArticle.innerHTML = "";
-      contElem.append(editForm)
+      contElem.append(editForm);
       editForm.append(editDivArticle);
       editDivArticle.append(editLabelArticle);
-      editLabelArticle.append(editInputArticle)
+      editLabelArticle.append(editInputArticle);
       editDivArticle.append(divEditErrArticle);
 
       const elemCount = catalog.find(
@@ -238,21 +224,21 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
       );
       editInputCount.value = "";
       divCount.innerHTML = "";
-      contElem.append(editForm)
+      contElem.append(editForm);
       editForm.append(editDivCount);
       editDivCount.append(editLabelCount);
       editLabelCount.append(editInputCount);
-      editDivCount.append(divEditErrCount)
+      editDivCount.append(divEditErrCount);
 
       const elemPrice = catalog.find(
         (item) => item.itemID === editButton.itemID
       );
       editInputPrice.value = "";
       divPrice.innerHTML = "";
-      contElem.append(editForm)
+      contElem.append(editForm);
       editForm.append(editDivPrice);
       editDivPrice.append(editLabelPrice);
-      editLabelPrice.append(editInputPrice)
+      editLabelPrice.append(editInputPrice);
       editDivPrice.append(divEditErrPrice);
 
       const elemDate = catalog.find(
@@ -260,22 +246,21 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
       );
       editInputDate.value = "";
       divDate.innerHTML = "";
-      
 
       const elemImg = catalog.find((item) => item.itemID === editButton.itemID);
       editInputImg.value = "";
       divImg.innerHTML = "";
-      contElem.append(editForm)
+      contElem.append(editForm);
       editForm.append(editDivImg);
       editDivImg.append(editLabelImg);
-      editLabelImg.append(editInputImg)
+      editLabelImg.append(editInputImg);
 
       const elemDesc = catalog.find(
         (item) => item.itemID === editButton.itemID
       );
       editInputDesc.value = "";
       divDesc.innerHTML = "";
-      
+
       contElem.append(btSave);
       contElem.append(btDelete);
       editInputName.addEventListener("change", (event) => {
@@ -289,14 +274,18 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
           divEditErrName.hidden = true;
           elemName.name = nameNew;
         }
-
       });
 
       editInputArticle.addEventListener("change", (event) => {
         const articleNew = event.target.value;
         divArticle.hidden = true;
         divArticle.innerHTML = `Article: ${elemName.article}`;
-        if (articleNew[0] >= "A" && articleNew[0] <= "Z" && +articleNew[1] && +articleNew[2]) {
+        if (
+          articleNew[0] >= "A" &&
+          articleNew[0] <= "Z" &&
+          +articleNew[1] &&
+          +articleNew[2]
+        ) {
           divEditErrArticle.hidden = true;
           elemArticle.article = articleNew;
         } else divEditErrArticle.hidden = false;
@@ -305,17 +294,22 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
       editInputCount.addEventListener("change", (event) => {
         const countNew = +event.target.value;
         const countNewStr = event.target.value;
-        
+
         divCount.hidden = true;
-        
+
         divCount.innerHTML = `Count: ${elemCount.count}`;
-        if(countNew === 1){
+        if (countNew === 1) {
           divLastOne.hidden = false;
-          divLastOne.classList.add('last-one')
-        } else{
+          divLastOne.classList.add("last-one");
+        } else {
           divLastOne.hidden = true;
         }
-        if (countNew && countNew > 0 && !countNewStr.includes(".") && !countNewStr.includes(",")) {
+        if (
+          countNew &&
+          countNew > 0 &&
+          !countNewStr.includes(".") &&
+          !countNewStr.includes(",")
+        ) {
           divEditErrCount.hidden = true;
           elemCount.count = countNew;
         } else {
@@ -327,9 +321,13 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
         const priceNew = +event.target.value;
         const priceNewStr = event.target.value;
 
-        divPrice.hidden = true
+        divPrice.hidden = true;
         divPrice.innerHTML = `Price: ${elemPrice.price}`;
-        if (priceNew >= 0 && !priceNewStr.includes(".") && !priceNewStr.includes(",")) {
+        if (
+          priceNew >= 0 &&
+          !priceNewStr.includes(".") &&
+          !priceNewStr.includes(",")
+        ) {
           divEditErrPrice.hidden = true;
           elemPrice.price = priceNew;
         } else {
@@ -349,7 +347,7 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
         const descNew = event.target.value.split(" ");
         elemDesc.desc = descNew;
 
-        divDesc.hidden = true
+        divDesc.hidden = true;
         divDesc.innerHTML = `Desc: ${elemDesc.desc}`;
       });
 
@@ -363,5 +361,3 @@ divEditErrPrice.innerHTML = 'Enter only positive integers number'
     });
   });
 };
-
-
